@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+<!-->>>>>>> af530f7209ef1c257b3041faa02b9bb95f75491b-->
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+    <!-- carousel -->
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="3"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="static/img/img1.jpg" height="50px" alt="Chania" style="margin-left: 210px; height: 300px; width: 900px;"> 
+      <div class="carousel-caption">
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="static/img/img2.jpg" height="50px" alt="Chicago" style="margin-left: 210px; height: 300px; width: 900px;">
+      <div class="carousel-caption">
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="static/img/img3.jpg" height="50px" alt="New York" style="margin-left: 210px; height: 300px; width: 900px;">
+      <div class="carousel-caption">
+      </div>
+    </div>
+
+<!--
+    <div class="item">
+      <img src="static/img/judob4.jpg" height="50px" alt="New York" style="margin-left: 163px;">
+      <div class="carousel-caption">
+      </div>
+    </div>
+  -->
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev" style="background: #ffffff; opacity: 0.0;">
+    <span class="glyphicon glyphicon-chevron-left" style="color:black;"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next" style="opacity: 0.0; background: #ffffff;">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+  <br><br>
+
+<div class="container" style="background-color: rgba(230,230,230,.35);">
+  <div class="row content">
+
+      <div class="col-sm-12" >
+        <h4><small style="margin-left: 40px;">NOTÍCIAS RECENTES</small></h4>
+        <hr>
+
+        
+            <div class="col-sm-18" >
+              {% for notices in noticias%}
+                {% if not forloop.counter >= 4 %}
+                <div class="col-sm-4" >
+                    <h2><a href="noticia/{{notices.id}}/" style="text-decoration: none;">{{notices.titulo}}</a></h2>
+                    <h5><span class="glyphicon glyphicon-time"></span> Postado por {{notices.autor}}, em {{notices.data_lancamento_noticia}}.</h5>
+                    
+                    <!--<h5><span class="label label-danger">Food</span> <span class="label label-primary">Ipsum</span></h5><br>-->
+                    <img width="300px" height="200px" src="{{MEDIA_URL}}{{notices.imagem.url}}" style="margin-right: 10px; 
+                    margin-left: 30px" align="left">
+                    
+                    
+                  <br><br>
+                </div>
+                {% endif %}
+
+                {% endfor %}
+            </div>
+        
+
+      </div>
+  </div>
+</div>
+<br>
+
+
+{% endblock %}
+
+
+
+</body>
+</html>
